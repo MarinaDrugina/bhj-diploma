@@ -7,7 +7,9 @@ class Account extends Entity {
   /**
    * Получает информацию о счёте
    * */
-  static get(id = '', callback){
+  /*static get(id = '', callback){
 
-  }
+  }*/
 }
+
+Account.URL = '/accoun';
