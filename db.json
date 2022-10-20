@@ -5,6 +5,18 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
+    },
+    {
+      "name": "Al",
+      "email": "test@test.ru",
+      "password": "12345",
+      "id": "uf2n4fkl9f9710h"
+    },
+    {
+      "name": "Вася",
+      "email": "test@test.com",
+      "password": "12345",
+      "id": "uf2n6hol9fe0yv9"
     }
   ],
   "accounts": [
@@ -22,6 +34,31 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "Сбербанк",
+      "user_id": "uf2n4fkl9f9710h",
+      "id": "uf2nfh0l9fai3ex"
+    },
+    {
+      "name": "Отпуск",
+      "user_id": "uf2n4fkl9f9710h",
+      "id": "uf2ngagl9fe1j0w"
+    },
+    {
+      "name": "Наличные",
+      "user_id": "uf2n4fkl9f9710h",
+      "id": "uf2nf78l9grig9g"
+    },
+    {
+      "name": "Кредит",
+      "user_id": "uf2n4fkl9f9710h",
+      "id": "uf2na60l9grn8jt"
+    },
+    {
+      "name": "фигня",
+      "user_id": "uf2n4fkl9f9710h",
+      "id": "uf2napsl9gt5frd"
     }
   ],
   "transactions": [
@@ -159,6 +196,87 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "uf2nbxwl9fais8v",
+      "type": "income",
+      "name": "Зарплата",
+      "sum": 25000,
+      "account_id": "uf2nfh0l9fai3ex",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-19T07:05:52.254Z"
+    },
+    {
+      "id": "uf2n8v8l9gpwdmw",
+      "type": "income",
+      "name": "аванс",
+      "sum": 15400,
+      "account_id": "uf2nfh0l9fai3ex",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-20T07:04:06.919Z"
+    },
+    {
+      "id": "uf2n62cl9gqg3dg",
+      "type": "income",
+      "name": "взнос",
+      "sum": 7000,
+      "account_id": "uf2ngagl9fe1j0w",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-20T07:19:26.739Z"
+    },
+    {
+      "id": "uf2n2zkl9grng20",
+      "type": "income",
+      "name": "Извоз",
+      "sum": 700,
+      "account_id": "uf2nf78l9grig9g",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-20T07:53:09.383Z"
+    },
+    {
+      "id": "uf2ngikl9grnt1m",
+      "type": "income",
+      "name": "Подработка",
+      "sum": 4200,
+      "account_id": "uf2na60l9grn8jt",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-20T07:53:26.217Z"
+    },
+    {
+      "id": "uf2nd6gl9gro3ri",
+      "type": "expense",
+      "name": "Досрочный платеж",
+      "sum": 1000,
+      "account_id": "uf2na60l9grn8jt",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-20T07:53:40.109Z"
+    },
+    {
+      "id": "uf2ndukl9gt16gm",
+      "type": "expense",
+      "name": "продукты",
+      "sum": 300,
+      "account_id": "uf2nf78l9grig9g",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-20T08:31:49.749Z"
+    },
+    {
+      "id": "uf2ngasl9gt5p6s",
+      "type": "income",
+      "name": "на фигню",
+      "sum": 3000,
+      "account_id": "uf2napsl9gt5frd",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-20T08:35:20.643Z"
+    },
+    {
+      "id": "uf2n47gl9gzymrb",
+      "type": "expense",
+      "name": "cfcfhb",
+      "sum": 50,
+      "account_id": "uf2napsl9gt5frd",
+      "user_id": "uf2n4fkl9f9710h",
+      "created_at": "2022-10-20T11:45:48.214Z"
     }
   ]
 }

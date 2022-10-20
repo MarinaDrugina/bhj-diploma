@@ -36,7 +36,8 @@ class Modal {
    * Закрывает текущее окно (Modal.close())
    * */
   onClose(event) {
-    if (event.target.dataset.dismiss === 'modal') {
+    const target = event.target.closest('[data-dismiss="modal"]');
+    if (target) {
       event.preventDefault();
       return this.close();
     }
@@ -53,7 +54,7 @@ class Modal {
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close(){
-    this.element.style.display = 'none';
+    this.element.style.display = '';
     return this;
   }
 

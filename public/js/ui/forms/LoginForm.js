@@ -10,7 +10,7 @@ class LoginForm extends AsyncForm {
    * закрывает окно, в котором находится форма
    * */
   onSubmit(options) {
-    User.login(options.data, (e, response) => {
+    User.login(options.data, (err, response) => {
       if (!response.success) {
         return 
       }

@@ -10,9 +10,9 @@ class TransactionsPage {
    * Сохраняет переданный элемент и регистрирует события
    * через registerEvents()
    * */
-  constructor( element ) {
-    if(!element) {
-      throw new Error('Нет такого элемента');
+  constructor(element) {
+    if (!element) {
+      throw new Error('Элемент не существует');
     }
 
     this.element = element;
@@ -34,15 +34,18 @@ class TransactionsPage {
    * */
   registerEvents() {
     this.element.addEventListener('click', (event) => {
-      if(event.target.className === 'remove-account') {
-        this.removeAccount();
-      }
-
-      if(event.target.className === 'transaction__remove') {
-        const {id} = event.target.dataset;
+      const transactionBtn = event.target.closest('.transaction__remove');
+      const accountBtn = event.target.closest('.remove-account');
+      
+      if (transactionBtn) {
+        const {id} = transactionBtn.dataset;
         this.removeTransaction(id);
       }
-    })
+      
+      if (accountBtn) {
+        this.removeAccount()
+      }
+    });
   }
 
   /**
@@ -55,23 +58,15 @@ class TransactionsPage {
    * для обновления приложения
    * */
   removeAccount() {
-    if(!this.lastOptions) {
+    if (!this.lastOptions) {
       return;
     }
-
-    if (!confirm('Вы действительно хотите удалить счёт?')) {
+    if (!confirm( 'Вы действительно хотите удалить счёт?' )) {
       return;
     }
-
     const id = this.lastOptions.account_id;
     this.clear();
-    Account.remove(id, {}, (e, response) => {
-      if(!response.success) {
-        return;
-      }
-
-      App.update();
-  });
+    Account.remove(id, {}, () => App.update());
   }
 
   /**
@@ -84,14 +79,7 @@ class TransactionsPage {
     if (!confirm('Вы действительно хотите удалить эту транзакцию?')) {
       return;
     }
-
-    Transaction.remove(id, {}, (e, response) => {
-      if(!response.success) {
-        return;
-      }
-
-      App.update();
-    });
+    Transaction.remove(id, {}, () => App.update());
   }
 
   /**
@@ -101,20 +89,18 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options){
-    if(!options) {
+    if (!options) {
       return;
     }
-
+    
     this.lastOptions = options;
 
-    Account.get(options.account_id, {}, (e, response) => {
-      if(response.success) {
-        this.renderTitle(response.data.name);
-      }
+    Account.get(options.account_id, {}, (err, response) => {
+      this.renderTitle(response.data.name);
     });
 
-    Transaction.list(options, (e, response) => {
-      if (e) {
+    Transaction.list(options, (err, response) => {
+      if (err) {
         return;
       }
 
@@ -137,7 +123,7 @@ class TransactionsPage {
    * */
   clear() {
     this.renderTransactions([]);
-    this.renderTitle('Название счета');
+    this.renderTitle('Название счёта');
     this.lastOptions = null;
   }
 
@@ -145,7 +131,8 @@ class TransactionsPage {
    * Устанавливает заголовок в элемент .content-title
    * */
   renderTitle(name){
-    this.element.querySelector('.content-title').textContent = name;
+    const title = this.element.querySelector('.content-title');
+    title.textContent = name;
   }
 
   /**
@@ -183,9 +170,9 @@ class TransactionsPage {
    * item - объект с информацией о транзакции
    * */
   getTransactionHTML(item){
-    const {type, name, id} = item,
-        date = this.formatDate(item.created_at),
-        sum = item.sum.toLocaleString('en');
+    const {type, name, id} = item;
+    const date = this.formatDate(item.created_at);
+    const sum = item.sum.toLocaleString('en');
 
     return `
       <div class="transaction transaction_${type.toLowerCase()} row">
@@ -217,8 +204,9 @@ class TransactionsPage {
    * используя getTransactionHTML
    * */
   renderTransactions(data){
-    const itemHTML = data.reverse().map(this.getTransactionHTML.bind(this)).join('');
+    const container = document.querySelector('.content');
+    const itemsHTML = data.reverse().map(this.getTransactionHTML.bind(this)).join('');
 
-    document.querySelector('.content').innerHTML += `<div class="transactions-content">${itemHTML}</div>`;
+    container.innerHTML = `<div class="transactions-content">${itemsHTML}</div>`;
   }
 }

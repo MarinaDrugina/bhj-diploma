@@ -35,13 +35,16 @@ class AccountsWidget {
   registerEvents() {
     this.element.addEventListener('click', (event) => {
       event.preventDefault();
+      const createAccount = event.target.closest('.create-account');
+      const selectedAccount = event.target.closest('.account');
       
-      if (event.target.className === 'create-account') {
-        return App.getModal('createAccount').open();
+      if (createAccount) {
+        const modal = App.getModal('createAccount');
+        return modal.open();
       }
 
-      if (event.target.className === 'account') {
-        this.onSelectAccount(event.target);
+      if (selectedAccount) {
+        this.onSelectAccount(selectedAccount);
       }
     });
   }
@@ -61,8 +64,8 @@ class AccountsWidget {
       return;
     }
 
-    Account.list(User.current(), (e, response) => {
-      if (e) {
+    Account.list(User.current(), (err, response) => {
+      if (err) {
         return;
       }
 
@@ -96,8 +99,7 @@ class AccountsWidget {
       const account = this.element.querySelector(`.account[data-id="${this.currentAccountId}"]`);
       if (account) {
         account.classList.remove('active');
-      }
-      else {
+      } else {
         this.currentAccountId = null;
       }
     }
@@ -137,9 +139,9 @@ class AccountsWidget {
    * */
   renderItem(data){
     data.forEach(item => {
-      const {name, id} = item,
-          sum = item.sum.toLocaleString('en'),
-          html = this.getAccountHTML({
+      const {name, id} = item;
+      const sum = item.sum.toLocaleString('en');
+      const html = this.getAccountHTML({
             name, id, sum
           });
 

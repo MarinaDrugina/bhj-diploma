@@ -4,7 +4,7 @@
  * */
 const createRequest = (options = {}) => {
 
-    const f = function () {},
+    const f = function() {},
         {
             method = 'GET',
             headers = {},
@@ -16,11 +16,13 @@ const createRequest = (options = {}) => {
             data = {}
         } = options;
 
-    const url = {options};
+    let {url} = options;
 
     const xhr = new XMLHttpRequest();
     xhr.responseType = responseType;
     xhr.withCredentials = true;
+
+    let requestData;
 
     xhr.onload = function() {
         if (xhr.status !== 200) {
@@ -32,12 +34,11 @@ const createRequest = (options = {}) => {
     };
       
     xhr.onerror = function() {
-        const e = new Error('Request Error');
-        error.call(this, e);
-        callback.call(this, e);
+        const err = new Error('Request Error');
+        error.call(this, err);
+        callback.call(this, err);
     };
 
-    let requestData;
     if(method === 'GET') {
         const urlParam = Object.entries(data).map(([key, value]) => `${key}=${value}`).join('&');
         if (urlParam) {
@@ -53,12 +54,11 @@ const createRequest = (options = {}) => {
     try {
         xhr.open(method, url, async);
         xhr.send(requestData);
-    }
-    catch (e) {
-        error.call(this, e);
-        callback.call(this, e);
+    } catch (err) {
+        error.call(this, err);
+        callback.call(this, err);
         return xhr;
     }
 
     return xhr;
-};
+}

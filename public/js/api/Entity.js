@@ -8,8 +8,8 @@ class Entity {
    * Это могут быть счета или доходы/расходы
    * (в зависимости от того, что наследуется от Entity)
    * */
-  static list(data, callback = f => f){
-    return createRequest({
+  static list(data, callback = f => f) {
+      return createRequest({
       url: this.URL,
       method: 'GET',
       responseType: 'json',
@@ -26,19 +26,9 @@ class Entity {
   static create(data, callback = f => f) {
     return createRequest({
       url: this.URL,
-      method: 'GET',
+      method: 'PUT',
       responseType: 'json',
-      data: Object.assign({_method: 'PUT'}, data),
-      callback 
-    });
-  }
-
-  static get(id = '', data, callback = f => f) {
-    return createRequest({
-      url: this.URL,
-      method: 'GET',
-      responseType: 'json',
-      data: data,
+      data:  data,
       callback 
     });
   }
@@ -50,9 +40,9 @@ class Entity {
   static remove(id = '', data, callback = f => f) {
     return createRequest({
       url: this.URL,
-      method: 'POST',
+      method: 'DELETE',
       responseType: 'json',
-      data: Object.assign({_method: 'DELETE'}, {id: id}, data),
+      data: Object.assign({id: id}, data),
       callback 
     });
   }

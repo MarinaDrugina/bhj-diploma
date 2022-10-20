@@ -7,9 +7,15 @@ class Account extends Entity {
   /**
    * Получает информацию о счёте
    * */
-  /*static get(id = '', callback){
-
-  }*/
+    static get(id = '', data, callback = f => f) {
+    return createRequest({
+      url: this.URL + '/' + id,
+      method: 'GET',
+      responseType: 'json',
+      data: data,
+      callback 
+    });
+  }
 }
 
-Account.URL = '/accoun';
+Account.URL = '/account';
