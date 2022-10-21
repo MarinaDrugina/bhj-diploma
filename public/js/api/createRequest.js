@@ -7,30 +7,34 @@ const createRequest = (options = {}) => {
     const f = function() {},
         {
             method = 'GET',
-            headers = {},
-            success = f,
-            error = f,
+            //headers = {},
+            //success = f,
+            //error = f,
             callback = f,
-            responseType,
+            //responseType,
             async = true,
             data = {}
         } = options;
 
     let {url} = options;
+    const success = f;
+    const error = f;
 
     const xhr = new XMLHttpRequest();
-    xhr.responseType = responseType;
-    xhr.withCredentials = true;
+    xhr.responseType = 'json';
+    //xhr.withCredentials = true;
 
     let requestData;
 
     xhr.onload = function() {
-        if (xhr.status !== 200) {
+    /*    if (xhr.status !== 200) {
             alert(`Ошибка ${xhr.status}: ${xhr.statusText}`);
         } else { 
             success.call(this, xhr.response);
             callback.call(this, null, xhr.response);
-        }
+        }*/
+        success.call(this, xhr.response);
+        callback.call(this, null, xhr.response);
     };
       
     xhr.onerror = function() {

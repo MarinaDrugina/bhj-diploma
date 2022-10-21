@@ -12,7 +12,7 @@ class Entity {
       return createRequest({
       url: this.URL,
       method: 'GET',
-      responseType: 'json',
+      //responseType: 'json',
       data,
       callback 
     });
@@ -27,7 +27,7 @@ class Entity {
     return createRequest({
       url: this.URL,
       method: 'PUT',
-      responseType: 'json',
+      //responseType: 'json',
       data:  data,
       callback 
     });
@@ -41,7 +41,7 @@ class Entity {
     return createRequest({
       url: this.URL,
       method: 'DELETE',
-      responseType: 'json',
+      //responseType: 'json',
       data: Object.assign({id: id}, data),
       callback 
     });

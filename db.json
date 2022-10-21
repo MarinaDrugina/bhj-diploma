@@ -56,9 +56,9 @@
       "id": "uf2na60l9grn8jt"
     },
     {
-      "name": "фигня",
+      "name": "ffgdgsdg",
       "user_id": "uf2n4fkl9f9710h",
-      "id": "uf2napsl9gt5frd"
+      "id": "uf2ne7wl9ib4266"
     }
   ],
   "transactions": [
@@ -261,22 +261,13 @@
       "created_at": "2022-10-20T08:31:49.749Z"
     },
     {
-      "id": "uf2ngasl9gt5p6s",
+      "id": "uf2nbi8l9ib4sj7",
       "type": "income",
-      "name": "на фигню",
-      "sum": 3000,
-      "account_id": "uf2napsl9gt5frd",
+      "name": "reeeeee",
+      "sum": 150,
+      "account_id": "uf2ne7wl9ib4266",
       "user_id": "uf2n4fkl9f9710h",
-      "created_at": "2022-10-20T08:35:20.643Z"
-    },
-    {
-      "id": "uf2n47gl9gzymrb",
-      "type": "expense",
-      "name": "cfcfhb",
-      "sum": 50,
-      "account_id": "uf2napsl9gt5frd",
-      "user_id": "uf2n4fkl9f9710h",
-      "created_at": "2022-10-20T11:45:48.214Z"
+      "created_at": "2022-10-21T09:46:17.586Z"
     }
   ]
 }

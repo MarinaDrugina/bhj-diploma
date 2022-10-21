@@ -25,8 +25,9 @@ class User {
    * из локального хранилища
    * */
   static current() {
-    const currentData = localStorage['user'];
-    return currentData && JSON.parse(currentData);
+    /*const currentData = localStorage['user'];
+    return currentData && JSON.parse(currentData);*/
+    return JSON.parse(localStorage.getItem("user") || '{}');
   }
 
   /**
@@ -37,7 +38,7 @@ class User {
     return createRequest({
       url: this.URL + '/current',
       method: 'GET',
-      responseType: 'json',
+      //responseType: 'json',
       data,
       callback: (err, response) => {
         if (response && response.user) {
@@ -60,7 +61,7 @@ class User {
     return createRequest({
       url: this.URL + '/login',
       method: 'POST',
-      responseType: 'json',
+      //responseType: 'json',
       data,
       callback: (err, response) => {
         if (response && response.user) {
@@ -81,7 +82,7 @@ class User {
     return createRequest({
       url: this.URL + '/register',
       method: 'POST',
-      responseType: 'json',
+      //responseType: 'json',
       data,
       callback: (err, response) => {
         if (response && response.user) {
@@ -100,7 +101,7 @@ class User {
     return createRequest({
       url: this.URL + '/logout',
       method: 'POST',
-      responseType: 'json',
+      //responseType: 'json',
       data,
       callback: (err, response) => {
         if (response && response.success) {

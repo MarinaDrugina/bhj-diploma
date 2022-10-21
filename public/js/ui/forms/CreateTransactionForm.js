@@ -26,8 +26,6 @@ class CreateTransactionForm extends AsyncForm {
       if (response && response.data) {
         accountSelect.innerHTML = '';
         response.data.forEach(renderItem);
-      } else {
-        return;
       }
     });
   }

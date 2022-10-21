@@ -28,7 +28,7 @@ class Modal {
   registerEvents() {
     this.onClose = this.onClose.bind(this);
     this.element.addEventListener('click', this.onClose);
-    return this;
+    //return this;
   }
 
   /**
@@ -39,7 +39,8 @@ class Modal {
     const target = event.target.closest('[data-dismiss="modal"]');
     if (target) {
       event.preventDefault();
-      return this.close();
+      this.close();
+      //return this.close();
     }
   }
   /**
@@ -48,18 +49,18 @@ class Modal {
    * */
   open() {
     this.element.style.display = 'block';
-    return this;
+    //return this;
   }
   /**
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close(){
     this.element.style.display = '';
-    return this;
+    //return this;
   }
 
   unregisterEvents() {
     this.element.removeEventListener('click', this.onClose);
-    return this;
+    //return this;
   }
 }
